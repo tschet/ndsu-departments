@@ -1,0 +1,18 @@
+name = NDSU Departments
+description = NDSU Colleges and Departments Taxonomy
+package = NDSU
+core = 7.x
+
+dependencies[] = email
+dependencies[] = entity_token
+dependencies[] = field_group
+dependencies[] = field_ui
+dependencies[] = field_validation
+dependencies[] = link
+dependencies[] = list
+dependencies[] = number
+dependencies[] = phone
+dependencies[] = taxonomy
+
+project = "ndsu_departments"
+version = "7.x-1.0"

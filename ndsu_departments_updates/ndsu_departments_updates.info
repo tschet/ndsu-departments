@@ -1,0 +1,12 @@
+name = NDSU Departments Updates
+description = Feeds Importer for ongoing User updates to NDSU Department content
+package = NDSU
+core = 7.x
+
+dependencies[] = feeds
+dependencies[] = feeds_tamper
+dependencies[] = ndsu_departments
+dependencies[] = strongarm
+
+project = "ndsu_departments"
+version = "7.x-1.0"

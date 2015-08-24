@@ -1,0 +1,15 @@
+name = NDSU Departments Panels & Views
+description = Panels Displays and Views for NDSU Departments Taxonomy
+package = NDSU
+core = 7.x
+
+dependencies[] = ctools_custom_content
+dependencies[] = ndsu_departments
+dependencies[] = panels
+dependencies[] = panels_breadcrumbs
+dependencies[] = page_manager
+dependencies[] = php
+dependencies[] = semanticviews
+
+project = "ndsu_departments"
+version = "7.x-1.0"

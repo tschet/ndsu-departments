@@ -1,0 +1,1749 @@
+<?php
+/**
+ * @file
+ * Install Leeds Classification Vocabulary and Terms
+ */
+
+/**
+ * Implements hook_install().
+ */
+function ndsu_departments_install()
+{
+    $vocabulary = 'NDSU Departments'; // Vocabulary Name
+    $vocabulary_machine = 'departments'; // Vocabulary machine name to add
+    $vocab = taxonomy_vocabulary_machine_name_load($vocabulary_machine);
+    if (!isset($vocab->vid)) { // If taxonomy doesn't exist.
+        // Add taxonomy
+        taxonomy_vocabulary_save((object)array(
+            'name' => $vocabulary,
+            'machine_name' => $vocabulary_machine,
+        ));
+        variable_set('pathauto_taxonomy_term_departments_pattern', 'college-department/[term:parent:url:path]/[term:name]');
+        variable_set('field_bundle_settings_taxonomy_term__departments', array (
+            'view_modes' =>
+                array (
+                    'full' =>
+                        array (
+                            'custom_settings' => true,
+                        ),
+                    'token' =>
+                        array (
+                            'custom_settings' => false,
+                        ),
+                ),
+            'extra_fields' =>
+                array (
+                    'form' =>
+                        array (
+                        ),
+                    'display' =>
+                        array (
+                            'description' =>
+                                array (
+                                    'default' =>
+                                        array (
+                                            'weight' => '0',
+                                            'visible' => true,
+                                        ),
+                                    'full' =>
+                                        array (
+                                            'weight' => '0',
+                                            'visible' => true,
+                                        ),
+                                ),
+                        ),
+                ),
+        ));
+    }
+
+// create all the fields we are adding to our content type
+    foreach (_ndsu_departments_installed_fields() as $field) {
+        field_create_field($field);
+    }
+
+// create all the instances for our fields
+    foreach (_ndsu_departments_installed_instances() as $instance) {
+        field_create_instance($instance);
+    }
+
+    $vocab = taxonomy_vocabulary_machine_name_load($vocabulary_machine); // Get vid of new Vocabulary
+    $vid = $vocab->vid; // New Vocabulary ID
+
+    include_once "includes/ndsu_departments_terms.inc"; // this will include Terms Array
+
+      foreach ($terms as $key => $value) {
+
+          $term = new stdClass();
+          $term->name = $value['name'];
+          $term->description = $value['description'];
+          $term->vid = $value['vid'];
+          // Department Number
+          if($value['dept_number'] != '') {
+              $term->field_ndsu_dept_number['und'][0]['value'] = $value['dept_number'];
+          }
+          else {
+              $term->field_ndsu_dept_number = NULL;
+          }
+          // Acronym
+          if($value['acronym'] != '') {
+              $term->field_ndsu_dept_acronym['und'][0]['value'] = $value['acronym'];
+              $term->field_ndsu_dept_acronym_d['und'][0]['value'] = $value['display_acronym'];
+          }
+          else {
+              $term->field_ndsu_dept_acronym = NULL;
+              $term->field_ndsu_dept_acronym_d['und'][0]['value'] = '0';
+          }
+          // URL
+          if($value['dept_url'] != '') {
+              $term->field_ndsu_dept_url['und'][0]['url'] = $value['dept_url'];
+          }
+          else {
+              $term->field_ndsu_dept_url = NULL;
+          }
+
+          $parent_name = $value['parent'];
+
+          if($parent_name != NULL) {
+              $parent = taxonomy_get_term_by_name($parent_name, $vocabulary_machine);
+              if (!empty($parent)) {
+                  $parent = array_values($parent);
+                  $term->parent = $parent[0]->tid;
+              }
+              else {$term->parent = NULL;}
+          }
+          $term->weight = $value['weight'];
+          taxonomy_term_save($term);
+      }
+
+
+}
+
+
+/**
+ * Returns a structured array defining the fields created by this node type.
+ *
+ * @return
+ * An associative array specifying the fields we wish to add to our
+ * new node type.
+ */
+function _ndsu_departments_installed_fields()
+{
+    return array(
+// Insert exported Fields
+// FIELD: field_ndsu_dept_number
+        'field_ndsu_dept_number' => array(
+            'translatable' => '0',
+            'entity_types' => array(),
+            'settings' => array(),
+            'storage' => array(
+                'type' => 'field_sql_storage',
+                'settings' => array(),
+                'module' => 'field_sql_storage',
+                'active' => '1',
+                'details' => array(
+                    'sql' => array(
+                        'FIELD_LOAD_CURRENT' => array(
+                            'field_data_field_ndsu_dept_number' => array(
+                                'value' => 'field_ndsu_dept_number_value',
+                            ),
+                        ),
+                        'FIELD_LOAD_REVISION' => array(
+                            'field_revision_field_ndsu_dept_number' => array(
+                                'value' => 'field_ndsu_dept_number_value',
+                            ),
+                        ),
+                    ),
+                ),
+            ),
+            'foreign keys' => array(),
+            'indexes' => array(),
+            'field_name' => 'field_ndsu_dept_number',
+            'type' => 'number_integer',
+            'module' => 'number',
+            'active' => '1',
+            'locked' => '0',
+            'cardinality' => '1',
+            'deleted' => '0',
+            'columns' => array(
+                'value' => array(
+                    'type' => 'int',
+                    'not null' => FALSE,
+                ),
+            ),
+            'bundles' => array(
+                'taxonomy_term' => array(
+                    'departments',
+                ),
+            ),
+        ),
+
+// FIELD: field_ndsu_dept_acronym
+        'field_ndsu_dept_acronym' => array(
+            'translatable' => '0',
+            'entity_types' => array(),
+            'settings' => array(
+                'max_length' => '32',
+            ),
+            'storage' => array(
+                'type' => 'field_sql_storage',
+                'settings' => array(),
+                'module' => 'field_sql_storage',
+                'active' => '1',
+                'details' => array(
+                    'sql' => array(
+                        'FIELD_LOAD_CURRENT' => array(
+                            'field_data_field_ndsu_dept_acronym' => array(
+                                'value' => 'field_ndsu_dept_acronym_value',
+                                'format' => 'field_ndsu_dept_acronym_format',
+                            ),
+                        ),
+                        'FIELD_LOAD_REVISION' => array(
+                            'field_revision_field_ndsu_dept_acronym' => array(
+                                'value' => 'field_ndsu_dept_acronym_value',
+                                'format' => 'field_ndsu_dept_acronym_format',
+                            ),
+                        ),
+                    ),
+                ),
+            ),
+            'foreign keys' => array(
+                'format' => array(
+                    'table' => 'filter_format',
+                    'columns' => array(
+                        'format' => 'format',
+                    ),
+                ),
+            ),
+            'indexes' => array(
+                'format' => array(
+                    'format',
+                ),
+            ),
+            'field_name' => 'field_ndsu_dept_acronym',
+            'type' => 'text',
+            'module' => 'text',
+            'active' => '1',
+            'locked' => '0',
+            'cardinality' => '1',
+            'deleted' => '0',
+            'columns' => array(
+                'value' => array(
+                    'type' => 'varchar',
+                    'length' => '32',
+                    'not null' => FALSE,
+                ),
+                'format' => array(
+                    'type' => 'varchar',
+                    'length' => 255,
+                    'not null' => FALSE,
+                ),
+            ),
+            'bundles' => array(
+                'taxonomy_term' => array(
+                    'departments',
+                ),
+            ),
+        ),
+
+// FIELD: field_ndsu_dept_acronym_d
+        'field_ndsu_dept_acronym_d' => array(
+            'translatable' => '0',
+            'entity_types' => array(),
+            'settings' => array(
+                'allowed_values' => array(
+                    '0',
+                    '1',
+                ),
+                'allowed_values_function' => '',
+            ),
+            'storage' => array(
+                'type' => 'field_sql_storage',
+                'settings' => array(),
+                'module' => 'field_sql_storage',
+                'active' => '1',
+                'details' => array(
+                    'sql' => array(
+                        'FIELD_LOAD_CURRENT' => array(
+                            'field_data_field_ndsu_dept_acronym_d' => array(
+                                'value' => 'field_ndsu_dept_acronym_d_value',
+                            ),
+                        ),
+                        'FIELD_LOAD_REVISION' => array(
+                            'field_revision_field_ndsu_dept_acronym_d' => array(
+                                'value' => 'field_ndsu_dept_acronym_d_value',
+                            ),
+                        ),
+                    ),
+                ),
+            ),
+            'foreign keys' => array(),
+            'indexes' => array(
+                'value' => array(
+                    'value',
+                ),
+            ),
+            'field_name' => 'field_ndsu_dept_acronym_d',
+            'type' => 'list_boolean',
+            'module' => 'list',
+            'active' => '1',
+            'locked' => '0',
+            'cardinality' => '1',
+            'deleted' => '0',
+            'columns' => array(
+                'value' => array(
+                    'type' => 'int',
+                    'not null' => FALSE,
+                ),
+            ),
+            'bundles' => array(
+                'taxonomy_term' => array(
+                    'departments',
+                ),
+            ),
+        ),
+
+        // FIELD: field_ndsu_dept_url
+        'field_ndsu_dept_url' => array(
+            'translatable' => '0',
+            'entity_types' => array(),
+            'settings' => array(
+                'attributes' => array(
+                    'target' => 'default',
+                    'class' => '',
+                    'rel' => '',
+                ),
+                'url' => 0,
+                'title' => 'optional',
+                'title_value' => '',
+                'title_maxlength' => 128,
+                'enable_tokens' => 1,
+                'display' => array(
+                    'url_cutoff' => 80,
+                ),
+            ),
+            'storage' => array(
+                'type' => 'field_sql_storage',
+                'settings' => array(),
+                'module' => 'field_sql_storage',
+                'active' => '1',
+                'details' => array(
+                    'sql' => array(
+                        'FIELD_LOAD_CURRENT' => array(
+                            'field_data_field_ndsu_dept_url' => array(
+                                'url' => 'field_ndsu_dept_url_url',
+                                'title' => 'field_ndsu_dept_url_title',
+                                'attributes' => 'field_ndsu_dept_url_attributes',
+                            ),
+                        ),
+                        'FIELD_LOAD_REVISION' => array(
+                            'field_revision_field_ndsu_dept_url' => array(
+                                'url' => 'field_ndsu_dept_url_url',
+                                'title' => 'field_ndsu_dept_url_title',
+                                'attributes' => 'field_ndsu_dept_url_attributes',
+                            ),
+                        ),
+                    ),
+                ),
+            ),
+            'foreign keys' => array(),
+            'indexes' => array(),
+            'field_name' => 'field_ndsu_dept_url',
+            'type' => 'link_field',
+            'module' => 'link',
+            'active' => '1',
+            'locked' => '0',
+            'cardinality' => '1',
+            'deleted' => '0',
+            'columns' => array(
+                'url' => array(
+                    'type' => 'varchar',
+                    'length' => 2048,
+                    'not null' => FALSE,
+                    'sortable' => TRUE,
+                ),
+                'title' => array(
+                    'type' => 'varchar',
+                    'length' => 255,
+                    'not null' => FALSE,
+                    'sortable' => TRUE,
+                ),
+                'attributes' => array(
+                    'type' => 'text',
+                    'size' => 'medium',
+                    'not null' => FALSE,
+                ),
+            ),
+            'bundles' => array(
+                'taxonomy_term' => array(
+                    'departments',
+                ),
+            ),
+        ),
+
+
+        // FIELD: field_ndsu_dept_name_d
+        'field_ndsu_dept_name_d' => array(
+            'translatable' => '0',
+            'entity_types' => array(),
+            'settings' => array(
+                'max_length' => '128',
+            ),
+            'storage' => array(
+                'type' => 'field_sql_storage',
+                'settings' => array(),
+                'module' => 'field_sql_storage',
+                'active' => '1',
+                'details' => array(
+                    'sql' => array(
+                        'FIELD_LOAD_CURRENT' => array(
+                            'field_data_field_ndsu_dept_name_d' => array(
+                                'value' => 'field_ndsu_dept_name_d_value',
+                                'format' => 'field_ndsu_dept_name_d_format',
+                            ),
+                        ),
+                        'FIELD_LOAD_REVISION' => array(
+                            'field_revision_field_ndsu_dept_name_d' => array(
+                                'value' => 'field_ndsu_dept_name_d_value',
+                                'format' => 'field_ndsu_dept_name_d_format',
+                            ),
+                        ),
+                    ),
+                ),
+            ),
+            'foreign keys' => array(
+                'format' => array(
+                    'table' => 'filter_format',
+                    'columns' => array(
+                        'format' => 'format',
+                    ),
+                ),
+            ),
+            'indexes' => array(
+                'format' => array(
+                    'format',
+                ),
+            ),
+            'field_name' => 'field_ndsu_dept_name_d',
+            'type' => 'text',
+            'module' => 'text',
+            'active' => '1',
+            'locked' => '0',
+            'cardinality' => '1',
+            'deleted' => '0',
+            'columns' => array(
+                'value' => array(
+                    'type' => 'varchar',
+                    'length' => '128',
+                    'not null' => FALSE,
+                ),
+                'format' => array(
+                    'type' => 'varchar',
+                    'length' => 255,
+                    'not null' => FALSE,
+                ),
+            ),
+            'bundles' => array(
+                'taxonomy_term' => array(
+                    'departments',
+                ),
+            ),
+        ),
+
+// FIELD: field_ndsu_dept_title_d
+        'field_ndsu_dept_title_d' => array(
+            'translatable' => '0',
+            'entity_types' => array(),
+            'settings' => array(
+                'max_length' => '128',
+            ),
+            'storage' => array(
+                'type' => 'field_sql_storage',
+                'settings' => array(),
+                'module' => 'field_sql_storage',
+                'active' => '1',
+                'details' => array(
+                    'sql' => array(
+                        'FIELD_LOAD_CURRENT' => array(
+                            'field_data_field_ndsu_dept_title_d' => array(
+                                'value' => 'field_ndsu_dept_title_d_value',
+                                'format' => 'field_ndsu_dept_title_d_format',
+                            ),
+                        ),
+                        'FIELD_LOAD_REVISION' => array(
+                            'field_revision_field_ndsu_dept_title_d' => array(
+                                'value' => 'field_ndsu_dept_title_d_value',
+                                'format' => 'field_ndsu_dept_title_d_format',
+                            ),
+                        ),
+                    ),
+                ),
+            ),
+            'foreign keys' => array(
+                'format' => array(
+                    'table' => 'filter_format',
+                    'columns' => array(
+                        'format' => 'format',
+                    ),
+                ),
+            ),
+            'indexes' => array(
+                'format' => array(
+                    'format',
+                ),
+            ),
+            'field_name' => 'field_ndsu_dept_title_d',
+            'type' => 'text',
+            'module' => 'text',
+            'active' => '1',
+            'locked' => '0',
+            'cardinality' => '1',
+            'deleted' => '0',
+            'columns' => array(
+                'value' => array(
+                    'type' => 'varchar',
+                    'length' => '128',
+                    'not null' => FALSE,
+                ),
+                'format' => array(
+                    'type' => 'varchar',
+                    'length' => 255,
+                    'not null' => FALSE,
+                ),
+            ),
+            'bundles' => array(
+                'taxonomy_term' => array(
+                    'departments',
+                ),
+            ),
+        ),
+
+        // FIELD: field_ndsu_dept_address_d
+        'field_ndsu_dept_address_d' => array(
+            'translatable' => '0',
+            'entity_types' => array(),
+            'settings' => array(),
+            'storage' => array(
+                'type' => 'field_sql_storage',
+                'settings' => array(),
+                'module' => 'field_sql_storage',
+                'active' => '1',
+                'details' => array(
+                    'sql' => array(
+                        'FIELD_LOAD_CURRENT' => array(
+                            'field_data_field_ndsu_dept_address_d' => array(
+                                'value' => 'field_ndsu_dept_address_d_value',
+                                'format' => 'field_ndsu_dept_address_d_format',
+                            ),
+                        ),
+                        'FIELD_LOAD_REVISION' => array(
+                            'field_revision_field_ndsu_dept_address_d' => array(
+                                'value' => 'field_ndsu_dept_address_d_value',
+                                'format' => 'field_ndsu_dept_address_d_format',
+                            ),
+                        ),
+                    ),
+                ),
+            ),
+            'foreign keys' => array(
+                'format' => array(
+                    'table' => 'filter_format',
+                    'columns' => array(
+                        'format' => 'format',
+                    ),
+                ),
+            ),
+            'indexes' => array(
+                'format' => array(
+                    'format',
+                ),
+            ),
+            'field_name' => 'field_ndsu_dept_address_d',
+            'type' => 'text_long',
+            'module' => 'text',
+            'active' => '1',
+            'locked' => '0',
+            'cardinality' => '1',
+            'deleted' => '0',
+            'columns' => array(
+                'value' => array(
+                    'type' => 'text',
+                    'size' => 'big',
+                    'not null' => FALSE,
+                ),
+                'format' => array(
+                    'type' => 'varchar',
+                    'length' => 255,
+                    'not null' => FALSE,
+                ),
+            ),
+            'bundles' => array(
+                'taxonomy_term' => array(
+                    'departments',
+                ),
+            ),
+        ),
+
+        // FIELD: field_ndsu_dept_phone_d
+        'field_ndsu_dept_phone_d' => array(
+            'translatable' => '0',
+            'entity_types' => array(),
+            'settings' => array(
+                'country' => 'ca',
+            ),
+            'storage' => array(
+                'type' => 'field_sql_storage',
+                'settings' => array(),
+                'module' => 'field_sql_storage',
+                'active' => '1',
+                'details' => array(
+                    'sql' => array(
+                        'FIELD_LOAD_CURRENT' => array(
+                            'field_data_field_ndsu_dept_phone_d' => array(
+                                'value' => 'field_ndsu_dept_phone_d_value',
+                            ),
+                        ),
+                        'FIELD_LOAD_REVISION' => array(
+                            'field_revision_field_ndsu_dept_phone_d' => array(
+                                'value' => 'field_ndsu_dept_phone_d_value',
+                            ),
+                        ),
+                    ),
+                ),
+            ),
+            'foreign keys' => array(),
+            'indexes' => array(),
+            'field_name' => 'field_ndsu_dept_phone_d',
+            'type' => 'phone',
+            'module' => 'phone',
+            'active' => '1',
+            'locked' => '0',
+            'cardinality' => '1',
+            'deleted' => '0',
+            'columns' => array(
+                'value' => array(
+                    'type' => 'varchar',
+                    'length' => 255,
+                    'not null' => FALSE,
+                ),
+            ),
+            'bundles' => array(
+                'taxonomy_term' => array(
+                    'departments',
+                ),
+            ),
+        ),
+
+
+        // FIELD: field_ndsu_dept_cell_d
+        'field_ndsu_dept_cell_d' => array(
+            'translatable' => '0',
+            'entity_types' => array(),
+            'settings' => array(
+                'country' => 'ca',
+            ),
+            'storage' => array(
+                'type' => 'field_sql_storage',
+                'settings' => array(),
+                'module' => 'field_sql_storage',
+                'active' => '1',
+                'details' => array(
+                    'sql' => array(
+                        'FIELD_LOAD_CURRENT' => array(
+                            'field_data_field_ndsu_dept_cell_d' => array(
+                                'value' => 'field_ndsu_dept_cell_d_value',
+                            ),
+                        ),
+                        'FIELD_LOAD_REVISION' => array(
+                            'field_revision_field_ndsu_dept_cell_d' => array(
+                                'value' => 'field_ndsu_dept_cell_d_value',
+                            ),
+                        ),
+                    ),
+                ),
+            ),
+            'foreign keys' => array(),
+            'indexes' => array(),
+            'field_name' => 'field_ndsu_dept_cell_d',
+            'type' => 'phone',
+            'module' => 'phone',
+            'active' => '1',
+            'locked' => '0',
+            'cardinality' => '1',
+            'deleted' => '0',
+            'columns' => array(
+                'value' => array(
+                    'type' => 'varchar',
+                    'length' => 255,
+                    'not null' => FALSE,
+                ),
+            ),
+            'bundles' => array(
+                'taxonomy_term' => array(
+                    'departments',
+                ),
+            ),
+        ),
+
+
+        // FIELD: field_ndsu_dept_email_d
+        'field_ndsu_dept_email_d' => array(
+            'translatable' => '0',
+            'entity_types' => array(),
+            'settings' => array(),
+            'storage' => array(
+                'type' => 'field_sql_storage',
+                'settings' => array(),
+                'module' => 'field_sql_storage',
+                'active' => '1',
+                'details' => array(
+                    'sql' => array(
+                        'FIELD_LOAD_CURRENT' => array(
+                            'field_data_field_ndsu_dept_email_d' => array(
+                                'email' => 'field_ndsu_dept_email_d_email',
+                            ),
+                        ),
+                        'FIELD_LOAD_REVISION' => array(
+                            'field_revision_field_ndsu_dept_email_d' => array(
+                                'email' => 'field_ndsu_dept_email_d_email',
+                            ),
+                        ),
+                    ),
+                ),
+            ),
+            'foreign keys' => array(),
+            'indexes' => array(),
+            'field_name' => 'field_ndsu_dept_email_d',
+            'type' => 'email',
+            'module' => 'email',
+            'active' => '1',
+            'locked' => '0',
+            'cardinality' => '1',
+            'deleted' => '0',
+            'columns' => array(
+                'email' => array(
+                    'type' => 'varchar',
+                    'length' => 255,
+                    'not null' => FALSE,
+                ),
+            ),
+            'bundles' => array(
+                'taxonomy_term' => array(
+                    'departments',
+                ),
+            ),
+        ),
+
+// FIELD: field_ndsu_dept_name_t
+        'field_ndsu_dept_name_t' => array(
+            'translatable' => '0',
+            'entity_types' => array(),
+            'settings' => array(
+                'max_length' => '128',
+            ),
+            'storage' => array(
+                'type' => 'field_sql_storage',
+                'settings' => array(),
+                'module' => 'field_sql_storage',
+                'active' => '1',
+                'details' => array(
+                    'sql' => array(
+                        'FIELD_LOAD_CURRENT' => array(
+                            'field_data_field_ndsu_dept_name_t' => array(
+                                'value' => 'field_ndsu_dept_name_t_value',
+                                'format' => 'field_ndsu_dept_name_t_format',
+                            ),
+                        ),
+                        'FIELD_LOAD_REVISION' => array(
+                            'field_revision_field_ndsu_dept_name_t' => array(
+                                'value' => 'field_ndsu_dept_name_t_value',
+                                'format' => 'field_ndsu_dept_name_t_format',
+                            ),
+                        ),
+                    ),
+                ),
+            ),
+            'foreign keys' => array(
+                'format' => array(
+                    'table' => 'filter_format',
+                    'columns' => array(
+                        'format' => 'format',
+                    ),
+                ),
+            ),
+            'indexes' => array(
+                'format' => array(
+                    'format',
+                ),
+            ),
+            'field_name' => 'field_ndsu_dept_name_t',
+            'type' => 'text',
+            'module' => 'text',
+            'active' => '1',
+            'locked' => '0',
+            'cardinality' => '1',
+            'deleted' => '0',
+            'columns' => array(
+                'value' => array(
+                    'type' => 'varchar',
+                    'length' => '128',
+                    'not null' => FALSE,
+                ),
+                'format' => array(
+                    'type' => 'varchar',
+                    'length' => 255,
+                    'not null' => FALSE,
+                ),
+            ),
+            'bundles' => array(
+                'taxonomy_term' => array(
+                    'departments',
+                ),
+            ),
+        ),
+
+// FIELD: field_ndsu_dept_title_t
+        'field_ndsu_dept_title_t' => array(
+            'translatable' => '0',
+            'entity_types' => array(),
+            'settings' => array(
+                'max_length' => '128',
+            ),
+            'storage' => array(
+                'type' => 'field_sql_storage',
+                'settings' => array(),
+                'module' => 'field_sql_storage',
+                'active' => '1',
+                'details' => array(
+                    'sql' => array(
+                        'FIELD_LOAD_CURRENT' => array(
+                            'field_data_field_ndsu_dept_title_t' => array(
+                                'value' => 'field_ndsu_dept_title_t_value',
+                                'format' => 'field_ndsu_dept_title_t_format',
+                            ),
+                        ),
+                        'FIELD_LOAD_REVISION' => array(
+                            'field_revision_field_ndsu_dept_title_t' => array(
+                                'value' => 'field_ndsu_dept_title_t_value',
+                                'format' => 'field_ndsu_dept_title_t_format',
+                            ),
+                        ),
+                    ),
+                ),
+            ),
+            'foreign keys' => array(
+                'format' => array(
+                    'table' => 'filter_format',
+                    'columns' => array(
+                        'format' => 'format',
+                    ),
+                ),
+            ),
+            'indexes' => array(
+                'format' => array(
+                    'format',
+                ),
+            ),
+            'field_name' => 'field_ndsu_dept_title_t',
+            'type' => 'text',
+            'module' => 'text',
+            'active' => '1',
+            'locked' => '0',
+            'cardinality' => '1',
+            'deleted' => '0',
+            'columns' => array(
+                'value' => array(
+                    'type' => 'varchar',
+                    'length' => '128',
+                    'not null' => FALSE,
+                ),
+                'format' => array(
+                    'type' => 'varchar',
+                    'length' => 255,
+                    'not null' => FALSE,
+                ),
+            ),
+            'bundles' => array(
+                'taxonomy_term' => array(
+                    'departments',
+                ),
+            ),
+        ),
+
+        // FIELD: field_ndsu_dept_address_t
+        'field_ndsu_dept_address_t' => array(
+            'translatable' => '0',
+            'entity_types' => array(),
+            'settings' => array(),
+            'storage' => array(
+                'type' => 'field_sql_storage',
+                'settings' => array(),
+                'module' => 'field_sql_storage',
+                'active' => '1',
+                'details' => array(
+                    'sql' => array(
+                        'FIELD_LOAD_CURRENT' => array(
+                            'field_data_field_ndsu_dept_address_t' => array(
+                                'value' => 'field_ndsu_dept_address_t_value',
+                                'format' => 'field_ndsu_dept_address_t_format',
+                            ),
+                        ),
+                        'FIELD_LOAD_REVISION' => array(
+                            'field_revision_field_ndsu_dept_address_t' => array(
+                                'value' => 'field_ndsu_dept_address_t_value',
+                                'format' => 'field_ndsu_dept_address_t_format',
+                            ),
+                        ),
+                    ),
+                ),
+            ),
+            'foreign keys' => array(
+                'format' => array(
+                    'table' => 'filter_format',
+                    'columns' => array(
+                        'format' => 'format',
+                    ),
+                ),
+            ),
+            'indexes' => array(
+                'format' => array(
+                    'format',
+                ),
+            ),
+            'field_name' => 'field_ndsu_dept_address_t',
+            'type' => 'text_long',
+            'module' => 'text',
+            'active' => '1',
+            'locked' => '0',
+            'cardinality' => '1',
+            'deleted' => '0',
+            'columns' => array(
+                'value' => array(
+                    'type' => 'text',
+                    'size' => 'big',
+                    'not null' => FALSE,
+                ),
+                'format' => array(
+                    'type' => 'varchar',
+                    'length' => 255,
+                    'not null' => FALSE,
+                ),
+            ),
+            'bundles' => array(
+                'taxonomy_term' => array(
+                    'departments',
+                ),
+            ),
+        ),
+
+        // FIELD: field_ndsu_dept_phone_t
+        'field_ndsu_dept_phone_t' => array(
+            'translatable' => '0',
+            'entity_types' => array(),
+            'settings' => array(
+                'country' => 'ca',
+            ),
+            'storage' => array(
+                'type' => 'field_sql_storage',
+                'settings' => array(),
+                'module' => 'field_sql_storage',
+                'active' => '1',
+                'details' => array(
+                    'sql' => array(
+                        'FIELD_LOAD_CURRENT' => array(
+                            'field_data_field_ndsu_dept_phone_t' => array(
+                                'value' => 'field_ndsu_dept_phone_t_value',
+                            ),
+                        ),
+                        'FIELD_LOAD_REVISION' => array(
+                            'field_revision_field_ndsu_dept_phone_t' => array(
+                                'value' => 'field_ndsu_dept_phone_t_value',
+                            ),
+                        ),
+                    ),
+                ),
+            ),
+            'foreign keys' => array(),
+            'indexes' => array(),
+            'field_name' => 'field_ndsu_dept_phone_t',
+            'type' => 'phone',
+            'module' => 'phone',
+            'active' => '1',
+            'locked' => '0',
+            'cardinality' => '1',
+            'deleted' => '0',
+            'columns' => array(
+                'value' => array(
+                    'type' => 'varchar',
+                    'length' => 255,
+                    'not null' => FALSE,
+                ),
+            ),
+            'bundles' => array(
+                'taxonomy_term' => array(
+                    'departments',
+                ),
+            ),
+        ),
+
+
+        // FIELD: field_ndsu_dept_cell_t
+        'field_ndsu_dept_cell_t' => array(
+            'translatable' => '0',
+            'entity_types' => array(),
+            'settings' => array(
+                'country' => 'ca',
+            ),
+            'storage' => array(
+                'type' => 'field_sql_storage',
+                'settings' => array(),
+                'module' => 'field_sql_storage',
+                'active' => '1',
+                'details' => array(
+                    'sql' => array(
+                        'FIELD_LOAD_CURRENT' => array(
+                            'field_data_field_ndsu_dept_cell_t' => array(
+                                'value' => 'field_ndsu_dept_cell_t_value',
+                            ),
+                        ),
+                        'FIELD_LOAD_REVISION' => array(
+                            'field_revision_field_ndsu_dept_cell_t' => array(
+                                'value' => 'field_ndsu_dept_cell_t_value',
+                            ),
+                        ),
+                    ),
+                ),
+            ),
+            'foreign keys' => array(),
+            'indexes' => array(),
+            'field_name' => 'field_ndsu_dept_cell_t',
+            'type' => 'phone',
+            'module' => 'phone',
+            'active' => '1',
+            'locked' => '0',
+            'cardinality' => '1',
+            'deleted' => '0',
+            'columns' => array(
+                'value' => array(
+                    'type' => 'varchar',
+                    'length' => 255,
+                    'not null' => FALSE,
+                ),
+            ),
+            'bundles' => array(
+                'taxonomy_term' => array(
+                    'departments',
+                ),
+            ),
+        ),
+
+        // FIELD: field_ndsu_dept_email_t
+        'field_ndsu_dept_email_t' => array(
+            'translatable' => '0',
+            'entity_types' => array(),
+            'settings' => array(),
+            'storage' => array(
+                'type' => 'field_sql_storage',
+                'settings' => array(),
+                'module' => 'field_sql_storage',
+                'active' => '1',
+                'details' => array(
+                    'sql' => array(
+                        'FIELD_LOAD_CURRENT' => array(
+                            'field_data_field_ndsu_dept_email_t' => array(
+                                'email' => 'field_ndsu_dept_email_t_email',
+                            ),
+                        ),
+                        'FIELD_LOAD_REVISION' => array(
+                            'field_revision_field_ndsu_dept_email_t' => array(
+                                'email' => 'field_ndsu_dept_email_t_email',
+                            ),
+                        ),
+                    ),
+                ),
+            ),
+            'foreign keys' => array(),
+            'indexes' => array(),
+            'field_name' => 'field_ndsu_dept_email_t',
+            'type' => 'email',
+            'module' => 'email',
+            'active' => '1',
+            'locked' => '0',
+            'cardinality' => '1',
+            'deleted' => '0',
+            'columns' => array(
+                'email' => array(
+                    'type' => 'varchar',
+                    'length' => 255,
+                    'not null' => FALSE,
+                ),
+            ),
+            'bundles' => array(
+                'taxonomy_term' => array(
+                    'departments',
+                ),
+            ),
+        ),
+
+
+// End of Fields
+    );
+}
+
+/**
+ * Returns a structured array defining the instances for this node type.
+ *
+ * @return
+ *  An associative array specifying the instances we wish to add to our new
+ *  node type.
+ */
+function _ndsu_departments_installed_instances()
+{
+    return array(
+// Insert exported Instances
+// INSTANCE: field_ndsu_dept_number
+        'field_ndsu_dept_number' => array(
+            'label' => 'Department Number',
+            'widget' => array(
+                'weight' => '1',
+                'type' => 'number',
+                'module' => 'number',
+                'active' => 0,
+                'settings' => array(),
+            ),
+            'settings' => array(
+                'min' => '',
+                'max' => '',
+                'prefix' => '',
+                'suffix' => '',
+                'user_register_form' => FALSE,
+            ),
+            'display' => array(
+                'default' => array(
+                    'label' => 'inline',
+                    'type' => 'number_integer',
+                    'weight' => '0',
+                    'settings' => array(
+                        'thousand_separator' => '',
+                        'prefix_suffix' => 1,
+                        'decimal_separator' => '.',
+                        'scale' => 0,
+                    ),
+                    'module' => 'number',
+                ),
+            ),
+            'required' => 1,
+            'description' => '',
+            'default_value' => NULL,
+            'field_name' => 'field_ndsu_dept_number',
+            'entity_type' => 'taxonomy_term',
+            'bundle' => 'departments',
+            'deleted' => '0',
+        ),
+
+
+        // INSTANCE: field_ndsu_dept_acronym
+        'field_ndsu_dept_acronym' => array(
+            'label' => 'Acronym / Abbreviation',
+            'widget' => array(
+                'weight' => '2',
+                'type' => 'text_textfield',
+                'module' => 'text',
+                'active' => 1,
+                'settings' => array(
+                    'size' => '60',
+                ),
+            ),
+            'settings' => array(
+                'text_processing' => '0',
+                'linkit' => array(
+                    'enable' => 0,
+                    'profile' => '',
+                    'button_text' => 'Search',
+                ),
+                'user_register_form' => FALSE,
+            ),
+            'display' => array(
+                'default' => array(
+                    'label' => 'inline',
+                    'type' => 'text_default',
+                    'weight' => '1',
+                    'settings' => array(),
+                    'module' => 'text',
+                ),
+            ),
+            'required' => 0,
+            'description' => '',
+            'default_value' => NULL,
+            'field_name' => 'field_ndsu_dept_acronym',
+            'entity_type' => 'taxonomy_term',
+            'bundle' => 'departments',
+            'deleted' => '0',
+        ),
+
+        // INSTANCE: field_ndsu_dept_acronym_d
+        'field_ndsu_dept_acronym_d' => array(
+            'label' => 'Display Acronym/Abbreviation',
+            'widget' => array(
+                'weight' => '3',
+                'type' => 'options_onoff',
+                'module' => 'options',
+                'active' => 1,
+                'settings' => array(
+                    'display_label' => 1,
+                ),
+            ),
+            'settings' => array(
+                'user_register_form' => FALSE,
+            ),
+            'display' => array(
+                'default' => array(
+                    'label' => 'inline',
+                    'type' => 'list_default',
+                    'weight' => '2',
+                    'settings' => array(),
+                    'module' => 'list',
+                ),
+            ),
+            'required' => 0,
+            'description' => '',
+            'default_value' => array(
+                array(
+                    'value' => 0,
+                ),
+            ),
+            'field_name' => 'field_ndsu_dept_acronym_d',
+            'entity_type' => 'taxonomy_term',
+            'bundle' => 'departments',
+            'deleted' => '0',
+        ),
+
+
+        // INSTANCE: field_ndsu_dept_url
+        'field_ndsu_dept_url' => array(
+            'label' => 'Department URL',
+            'widget' => array(
+                'weight' => '5',
+                'type' => 'link_field',
+                'module' => 'link',
+                'active' => 0,
+                'settings' => array(),
+            ),
+            'settings' => array(
+                'absolute_url' => 1,
+                'validate_url' => 1,
+                'url' => 0,
+                'title' => 'none',
+                'title_value' => '',
+                'title_label_use_field_label' => 0,
+                'title_maxlength' => '128',
+                'enable_tokens' => 1,
+                'display' => array(
+                    'url_cutoff' => '80',
+                ),
+                'attributes' => array(
+                    'target' => 'default',
+                    'rel' => '',
+                    'configurable_class' => 0,
+                    'class' => '',
+                    'configurable_title' => 0,
+                    'title' => '',
+                ),
+                'rel_remove' => 'default',
+                'linkit' => array(
+                    'enable' => 0,
+                    'profile' => '',
+                    'button_text' => 'Search',
+                ),
+                'user_register_form' => FALSE,
+            ),
+            'display' => array(
+                'default' => array(
+                    'label' => 'hidden',
+                    'type' => 'link_default',
+                    'weight' => '3',
+                    'settings' => array(),
+                    'module' => 'link',
+                ),
+            ),
+            'required' => 0,
+            'description' => '',
+            'default_value' => NULL,
+            'field_name' => 'field_ndsu_dept_url',
+            'entity_type' => 'taxonomy_term',
+            'bundle' => 'departments',
+            'deleted' => '0',
+        ),
+
+
+        // INSTANCE: field_ndsu_dept_name_d
+        'field_ndsu_dept_name_d' => array(
+            'label' => 'Department Contact Name',
+            'widget' => array(
+                'weight' => '8',
+                'type' => 'text_textfield',
+                'module' => 'text',
+                'active' => 1,
+                'settings' => array(
+                    'size' => '60',
+                ),
+            ),
+            'settings' => array(
+                'text_processing' => '0',
+                'linkit' => array(
+                    'enable' => 0,
+                    'profile' => '',
+                    'button_text' => 'Search',
+                ),
+                'user_register_form' => FALSE,
+            ),
+            'display' => array(
+                'default' => array(
+                    'label' => 'inline',
+                    'type' => 'text_default',
+                    'weight' => '4',
+                    'settings' => array(),
+                    'module' => 'text',
+                ),
+            ),
+            'required' => 0,
+            'description' => '',
+            'default_value' => NULL,
+            'field_name' => 'field_ndsu_dept_name_d',
+            'entity_type' => 'taxonomy_term',
+            'bundle' => 'departments',
+            'deleted' => '0',
+        ),
+
+// INSTANCE: field_ndsu_dept_title_d
+        'field_ndsu_dept_title_d' => array(
+            'label' => 'Department Contact Title',
+            'widget' => array(
+                'weight' => '9',
+                'type' => 'text_textfield',
+                'module' => 'text',
+                'active' => 1,
+                'settings' => array(
+                    'size' => '60',
+                ),
+            ),
+            'settings' => array(
+                'text_processing' => '0',
+                'linkit' => array(
+                    'enable' => 0,
+                    'profile' => '',
+                    'button_text' => 'Search',
+                ),
+                'user_register_form' => FALSE,
+            ),
+            'display' => array(
+                'default' => array(
+                    'label' => 'inline',
+                    'type' => 'text_default',
+                    'weight' => '5',
+                    'settings' => array(),
+                    'module' => 'text',
+                ),
+            ),
+            'required' => 0,
+            'description' => '',
+            'default_value' => NULL,
+            'field_name' => 'field_ndsu_dept_title_d',
+            'entity_type' => 'taxonomy_term',
+            'bundle' => 'departments',
+            'deleted' => '0',
+        ),
+
+
+        // INSTANCE: field_ndsu_dept_address_d
+        'field_ndsu_dept_address_d' => array(
+            'label' => 'Department Address',
+            'widget' => array(
+                'weight' => '10',
+                'type' => 'text_textarea',
+                'module' => 'text',
+                'active' => 1,
+                'settings' => array(
+                    'rows' => '5',
+                ),
+            ),
+            'settings' => array(
+                'text_processing' => '1',
+                'linkit' => array(
+                    'enable' => 0,
+                    'profile' => '',
+                    'button_text' => 'Search',
+                ),
+                'user_register_form' => FALSE,
+            ),
+            'display' => array(
+                'default' => array(
+                    'label' => 'inline',
+                    'type' => 'text_default',
+                    'weight' => '12',
+                    'settings' => array(),
+                    'module' => 'text',
+                ),
+            ),
+            'required' => 0,
+            'description' => '',
+            'default_value' => NULL,
+            'field_name' => 'field_ndsu_dept_address_d',
+            'entity_type' => 'taxonomy_term',
+            'bundle' => 'departments',
+            'deleted' => '0',
+        ),
+
+        // INSTANCE: field_ndsu_dept_phone_d
+        'field_ndsu_dept_phone_d' => array(
+            'label' => 'Department Contact Phone',
+            'widget' => array(
+                'weight' => '11',
+                'type' => 'phone_textfield',
+                'module' => 'phone',
+                'active' => 0,
+                'settings' => array(),
+            ),
+            'settings' => array(
+                'phone_country_code' => 0,
+                'ca_phone_separator' => '-',
+                'ca_phone_parentheses' => 1,
+                'phone_default_country_code' => '1',
+                'phone_int_max_length' => 15,
+                'user_register_form' => FALSE,
+            ),
+            'display' => array(
+                'default' => array(
+                    'label' => 'inline',
+                    'type' => 'phone',
+                    'weight' => '7',
+                    'settings' => array(),
+                    'module' => 'phone',
+                ),
+            ),
+            'required' => 0,
+            'description' => '',
+            'default_value' => NULL,
+            'field_name' => 'field_ndsu_dept_phone_d',
+            'entity_type' => 'taxonomy_term',
+            'bundle' => 'departments',
+            'deleted' => '0',
+        ),
+
+
+// INSTANCE: field_ndsu_dept_cell_d
+        'field_ndsu_dept_cell_d' => array(
+            'label' => 'Department Contact Cell',
+            'widget' => array(
+                'weight' => '12',
+                'type' => 'phone_textfield',
+                'module' => 'phone',
+                'active' => 0,
+                'settings' => array(),
+            ),
+            'settings' => array(
+                'phone_country_code' => 0,
+                'ca_phone_separator' => '-',
+                'ca_phone_parentheses' => 1,
+                'phone_default_country_code' => '1',
+                'phone_int_max_length' => 15,
+                'user_register_form' => FALSE,
+            ),
+            'display' => array(
+                'default' => array(
+                    'label' => 'inline',
+                    'type' => 'phone',
+                    'weight' => '8',
+                    'settings' => array(),
+                    'module' => 'phone',
+                ),
+            ),
+            'required' => 0,
+            'description' => '',
+            'default_value' => NULL,
+            'field_name' => 'field_ndsu_dept_cell_d',
+            'entity_type' => 'taxonomy_term',
+            'bundle' => 'departments',
+            'deleted' => '0',
+        ),
+
+
+// INSTANCE: field_ndsu_dept_email_d
+        'field_ndsu_dept_email_d' => array(
+            'label' => 'Department Email',
+            'widget' => array(
+                'weight' => '13',
+                'type' => 'email_textfield',
+                'module' => 'email',
+                'active' => 1,
+                'settings' => array(
+                    'size' => '60',
+                ),
+            ),
+            'settings' => array(
+                'user_register_form' => FALSE,
+            ),
+            'display' => array(
+                'default' => array(
+                    'label' => 'inline',
+                    'type' => 'email_default',
+                    'weight' => '9',
+                    'settings' => array(),
+                    'module' => 'email',
+                ),
+            ),
+            'required' => 1,
+            'description' => '',
+            'default_value' => NULL,
+            'field_name' => 'field_ndsu_dept_email_d',
+            'entity_type' => 'taxonomy_term',
+            'bundle' => 'departments',
+            'deleted' => '0',
+        ),
+
+
+// INSTANCE: field_ndsu_dept_name_t
+        'field_ndsu_dept_name_t' => array(
+            'label' => 'Technical Contact Name',
+            'widget' => array(
+                'weight' => '14',
+                'type' => 'text_textfield',
+                'module' => 'text',
+                'active' => 1,
+                'settings' => array(
+                    'size' => '60',
+                ),
+            ),
+            'settings' => array(
+                'text_processing' => '0',
+                'linkit' => array(
+                    'enable' => 0,
+                    'profile' => '',
+                    'button_text' => 'Search',
+                ),
+                'user_register_form' => FALSE,
+            ),
+            'display' => array(
+                'default' => array(
+                    'label' => 'inline',
+                    'type' => 'text_default',
+                    'weight' => '10',
+                    'settings' => array(),
+                    'module' => 'text',
+                ),
+            ),
+            'required' => 0,
+            'description' => '',
+            'default_value' => NULL,
+            'field_name' => 'field_ndsu_dept_name_t',
+            'entity_type' => 'taxonomy_term',
+            'bundle' => 'departments',
+            'deleted' => '0',
+        ),
+
+
+// INSTANCE: field_ndsu_dept_title_t
+        'field_ndsu_dept_title_t' => array(
+            'label' => 'Technical Contact Title',
+            'widget' => array(
+                'weight' => '15',
+                'type' => 'text_textfield',
+                'module' => 'text',
+                'active' => 1,
+                'settings' => array(
+                    'size' => '60',
+                ),
+            ),
+            'settings' => array(
+                'text_processing' => '0',
+                'linkit' => array(
+                    'enable' => 0,
+                    'profile' => '',
+                    'button_text' => 'Search',
+                ),
+                'user_register_form' => FALSE,
+            ),
+            'display' => array(
+                'default' => array(
+                    'label' => 'inline',
+                    'type' => 'text_default',
+                    'weight' => '11',
+                    'settings' => array(),
+                    'module' => 'text',
+                ),
+            ),
+            'required' => 0,
+            'description' => '',
+            'default_value' => NULL,
+            'field_name' => 'field_ndsu_dept_title_t',
+            'entity_type' => 'taxonomy_term',
+            'bundle' => 'departments',
+            'deleted' => '0',
+        ),
+
+
+// INSTANCE: field_ndsu_dept_address_t
+        'field_ndsu_dept_address_t' => array(
+            'label' => 'Technical Contact Address',
+            'widget' => array(
+                'weight' => '16',
+                'type' => 'text_textarea',
+                'module' => 'text',
+                'active' => 1,
+                'settings' => array(
+                    'rows' => '5',
+                ),
+            ),
+            'settings' => array(
+                'text_processing' => '1',
+                'linkit' => array(
+                    'enable' => 0,
+                    'profile' => '',
+                    'button_text' => 'Search',
+                ),
+                'user_register_form' => FALSE,
+            ),
+            'display' => array(
+                'default' => array(
+                    'label' => 'inline',
+                    'type' => 'text_default',
+                    'weight' => '13',
+                    'settings' => array(),
+                    'module' => 'text',
+                ),
+            ),
+            'required' => 0,
+            'description' => '',
+            'default_value' => NULL,
+            'field_name' => 'field_ndsu_dept_address_t',
+            'entity_type' => 'taxonomy_term',
+            'bundle' => 'departments',
+            'deleted' => '0',
+        ),
+
+
+// INSTANCE: field_ndsu_dept_phone_t
+        'field_ndsu_dept_phone_t' => array(
+            'label' => 'Technical Contact Phone',
+            'widget' => array(
+                'weight' => '17',
+                'type' => 'phone_textfield',
+                'module' => 'phone',
+                'active' => 0,
+                'settings' => array(),
+            ),
+            'settings' => array(
+                'phone_country_code' => 0,
+                'ca_phone_separator' => '-',
+                'ca_phone_parentheses' => 1,
+                'phone_default_country_code' => '1',
+                'phone_int_max_length' => 15,
+                'user_register_form' => FALSE,
+            ),
+            'display' => array(
+                'default' => array(
+                    'label' => 'inline',
+                    'type' => 'phone',
+                    'weight' => '14',
+                    'settings' => array(),
+                    'module' => 'phone',
+                ),
+            ),
+            'required' => 0,
+            'description' => '',
+            'default_value' => NULL,
+            'field_name' => 'field_ndsu_dept_phone_t',
+            'entity_type' => 'taxonomy_term',
+            'bundle' => 'departments',
+            'deleted' => '0',
+        ),
+
+
+// INSTANCE: field_ndsu_dept_cell_t
+        'field_ndsu_dept_cell_t' => array(
+            'label' => 'Technical Contact Cell',
+            'widget' => array(
+                'weight' => '18',
+                'type' => 'phone_textfield',
+                'module' => 'phone',
+                'active' => 0,
+                'settings' => array(),
+            ),
+            'settings' => array(
+                'phone_country_code' => 0,
+                'ca_phone_separator' => '-',
+                'ca_phone_parentheses' => 1,
+                'phone_default_country_code' => '1',
+                'phone_int_max_length' => 15,
+                'user_register_form' => FALSE,
+            ),
+            'display' => array(
+                'default' => array(
+                    'label' => 'inline',
+                    'type' => 'phone',
+                    'weight' => '15',
+                    'settings' => array(),
+                    'module' => 'phone',
+                ),
+            ),
+            'required' => 0,
+            'description' => '',
+            'default_value' => NULL,
+            'field_name' => 'field_ndsu_dept_cell_t',
+            'entity_type' => 'taxonomy_term',
+            'bundle' => 'departments',
+            'deleted' => '0',
+        ),
+
+
+// INSTANCE: field_ndsu_dept_email_t
+        'field_ndsu_dept_email_t' => array(
+            'label' => 'Technical Contact Email',
+            'widget' => array(
+                'weight' => '19',
+                'type' => 'email_textfield',
+                'module' => 'email',
+                'active' => 1,
+                'settings' => array(
+                    'size' => '60',
+                ),
+            ),
+            'settings' => array(
+                'user_register_form' => FALSE,
+            ),
+            'display' => array(
+                'default' => array(
+                    'label' => 'inline',
+                    'type' => 'email_default',
+                    'weight' => '16',
+                    'settings' => array(),
+                    'module' => 'email',
+                ),
+            ),
+            'required' => 0,
+            'description' => '',
+            'default_value' => NULL,
+            'field_name' => 'field_ndsu_dept_email_t',
+            'entity_type' => 'taxonomy_term',
+            'bundle' => 'departments',
+            'deleted' => '0',
+        ),
+
+// End of Instances
+    );
+}
+
+
+function ndsu_departments_uninstall()
+{
+    // Remove set variables
+    variable_del('pathauto_taxonomy_term_departments_pattern');
+    variable_del('field_bundle_settings_taxonomy_term__departments');
+
+    $vocabulary_machine = 'departments'; // Vocabulary machine name to remove
+    // Uninstall Vocabulary
+        $vocab = taxonomy_vocabulary_machine_name_load($vocabulary_machine);
+    if (isset($vocab->vid)) { // If taxonomy exists.
+        taxonomy_vocabulary_delete($vocab->vid); // Delete Vocabulary
+    }
+
+}

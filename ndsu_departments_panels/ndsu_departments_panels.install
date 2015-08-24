@@ -1,0 +1,24 @@
+<?php
+
+/**
+ * @file
+ * RTP USer fields and taxonomy
+ *
+ * Install File
+ */
+/**
+ * Implements hook_install().
+ */
+function ndsu_departments_panels_install()
+{
+    // Set default variables.
+    variable_set('page_manager_term_view_disabled', '0');
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function ndsu_departments_panels_uninstall()
+{
+    //remove variables
+}
