@@ -18,7 +18,7 @@ function ndsu_departments_install()
             'name' => $vocabulary,
             'machine_name' => $vocabulary_machine,
         ));
-        variable_set('pathauto_taxonomy_term_departments_pattern', 'college-department/[term:parent:url:path]/[term:name]');
+        variable_set('pathauto_taxonomy_term_departments_pattern', 'college-department/[term:parent:name]/[term:name]');
         variable_set('field_bundle_settings_taxonomy_term__departments', array (
             'view_modes' =>
                 array (
