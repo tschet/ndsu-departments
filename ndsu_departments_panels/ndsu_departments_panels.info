@@ -13,3 +13,5 @@ dependencies[] = semanticviews
 
 project = "ndsu_departments"
 version = "7.x-1.0"
+
+scripts[] = js/ndsu-departments-panels.js
