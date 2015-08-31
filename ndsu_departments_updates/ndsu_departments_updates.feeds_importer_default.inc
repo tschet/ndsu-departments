@@ -17,7 +17,7 @@ function ndsu_departments_updates_feeds_importer_default() {
     $feeds_importer->id = 'ndsu_departments_updated';
     $feeds_importer->config = array(
         'name' => 'NDSU Departments Update',
-        'description' => '',
+        'description' => 'Importer for adding and updating Department contact information.',
         'fetcher' => array(
             'plugin_key' => 'FeedsFileFetcher',
             'config' => array(
