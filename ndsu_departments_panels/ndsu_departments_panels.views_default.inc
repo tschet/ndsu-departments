@@ -8,7 +8,7 @@
 /**
  * Implements hook_views_default_views().
  */
-function ndsu_departments_panels_views_default_views() {
+function ndsu_departments_views_default_views() {
     $views = array();
 
     $view = new view();
@@ -71,8 +71,6 @@ function ndsu_departments_panels_views_default_views() {
     $handler->display->display_options['fields']['name_1']['ui_name'] = 'Top Level';
     $handler->display->display_options['fields']['name_1']['label'] = '';
     $handler->display->display_options['fields']['name_1']['exclude'] = TRUE;
-    $handler->display->display_options['fields']['name_1']['alter']['alter_text'] = TRUE;
-    $handler->display->display_options['fields']['name_1']['alter']['text'] = '<h2>[name_1]</h2>';
     $handler->display->display_options['fields']['name_1']['element_label_colon'] = FALSE;
     $handler->display->display_options['fields']['name_1']['link_to_taxonomy'] = TRUE;
     /* Field: Bottom Level */
