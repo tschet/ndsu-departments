@@ -8,7 +8,7 @@
 /**
  * Implements hook_views_default_views().
  */
-function ndsu_departments_views_default_views() {
+function ndsu_departments_panels_views_default_views() {
     $views = array();
 
     $view = new view();
@@ -219,7 +219,7 @@ function ndsu_departments_views_default_views() {
     $view = new view();
     $view->name = 'ndsu_term_children';
     $view->description = '';
-    $view->tag = 'default';
+    $view->tag = 'NDSU, Departments';
     $view->base_table = 'taxonomy_term_data';
     $view->human_name = 'NDSU Term Children';
     $view->core = 7;

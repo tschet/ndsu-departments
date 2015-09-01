@@ -53,76 +53,81 @@ function ndsu_departments_updates_feeds_importer_default() {
                         'unique' => 1,
                     ),
                     2 => array(
+                        'source' => 'dept',
+                        'target' => 'guid',
+                        'unique' => FALSE,
+                    ),
+                    3 => array(
                         'source' => 'abbr',
                         'target' => 'field_ndsu_dept_acronym',
                         'unique' => FALSE,
                     ),
-                    3 => array(
+                    4 => array(
                         'source' => 'dis_abbr',
                         'target' => 'field_ndsu_dept_acronym_d',
                         'unique' => FALSE,
                     ),
-                    4 => array(
+                    5 => array(
                         'source' => 'url',
                         'target' => 'field_ndsu_dept_url:url',
                         'unique' => FALSE,
                     ),
-                    5 => array(
+                    6 => array(
                         'source' => 'ct_name',
                         'target' => 'field_ndsu_dept_name_d',
                         'unique' => FALSE,
                     ),
-                    6 => array(
+                    7 => array(
                         'source' => 'ct_title',
                         'target' => 'field_ndsu_dept_title_d',
                         'unique' => FALSE,
                     ),
-                    7 => array(
+                    8 => array(
                         'source' => 'ct_add',
                         'target' => 'field_ndsu_dept_address_d',
                         'unique' => FALSE,
                     ),
-                    8 => array(
+                    9 => array(
                         'source' => 'ct_email',
                         'target' => 'field_ndsu_dept_email_d',
                         'unique' => FALSE,
                     ),
-                    9 => array(
+                    10 => array(
                         'source' => 'ct_phone',
                         'target' => 'field_ndsu_dept_phone_d:url',
                         'unique' => FALSE,
                     ),
-                    10 => array(
+                    11 => array(
                         'source' => 'ct_cell',
                         'target' => 'field_ndsu_dept_cell_d:url',
                         'unique' => FALSE,
                     ),
-                    11 => array(
+                    12 => array(
                         'source' => 'tech_name',
                         'target' => 'field_ndsu_dept_name_t',
                         'unique' => FALSE,
                     ),
-                    12 => array(
+                    13 => array(
                         'source' => 'tech_title',
                         'target' => 'field_ndsu_dept_title_t',
                         'unique' => FALSE,
                     ),
-                    13 => array(
+                    14 => array(
                         'source' => 'tech_add',
                         'target' => 'field_ndsu_dept_address_t',
                         'unique' => FALSE,
                     ),
-                    14 => array(
+                    15 => array(
                         'source' => 'tech_email',
                         'target' => 'field_ndsu_dept_email_t',
                         'unique' => FALSE,
                     ),
-                    15 => array(
+                    16 => array(
                         'source' => 'tech_phone',
                         'target' => 'field_ndsu_dept_phone_t:url',
                         'unique' => FALSE,
                     ),
-                    16 => array(
+                    17 => array(
                         'source' => 'tech_cell',
                         'target' => 'field_ndsu_dept_cell_t:url',
                         'unique' => FALSE,
