@@ -20,7 +20,7 @@ function ndsu_departments_updates_feeds_tamper_default() {
     $feeds_tamper->plugin_id = 'cast_to_int';
     $feeds_tamper->settings = array();
     $feeds_tamper->weight = 2;
-    $feeds_tamper->description = 'Cast to integer';
+    $feeds_tamper->description = 'Cast Department Number to integer';
     $feeds_tampers['ndsu_departments_updated-dept-cast_to_int'] = $feeds_tamper;
 
     $feeds_tamper = new stdClass();
@@ -39,7 +39,7 @@ function ndsu_departments_updates_feeds_tamper_default() {
         'no_match_value' => FALSE,
     );
     $feeds_tamper->weight = 0;
-    $feeds_tamper->description = 'Convert to boolean';
+    $feeds_tamper->description = 'Convert Display Abbreviation to boolean';
     $feeds_tampers['ndsu_departments_updated-dis_abbr-convert_boolean'] = $feeds_tamper;
 
     return $feeds_tampers;
