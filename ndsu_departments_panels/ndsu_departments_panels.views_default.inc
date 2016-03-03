@@ -167,7 +167,7 @@ function ndsu_departments_panels_views_default_views() {
     $handler->display->display_options['fields']['rendered_entity']['element_label_colon'] = FALSE;
     $handler->display->display_options['fields']['rendered_entity']['link_to_entity'] = 0;
     $handler->display->display_options['fields']['rendered_entity']['display'] = 'view';
-    $handler->display->display_options['fields']['rendered_entity']['view_mode'] = 'teaser_small';
+    $handler->display->display_options['fields']['rendered_entity']['view_mode'] = 'rei_teaser_small';
     $handler->display->display_options['fields']['rendered_entity']['bypass_access'] = 0;
     /* Sort criterion: Content: Title */
     $handler->display->display_options['sorts']['title']['id'] = 'title';
