@@ -1,78 +1,78 @@
-name;dept;abbr;display_abbr;url;ct_name;ct_title;ct_add;ct_email;ct_phone;ct_cell;tech_name;tech_title;tech_add;tech_email;tech_phone;tech_cell
-College of Agriculture, Food Systems and Natural Resources;2200;ag;TRUE;http://www.ag.ndsu.edu/academics/;Jayma Moore/Scott Payne;Lab Managers;1307 N 18th Street, Fargo, ND 58102;;;701-231-8435;Jayma Moore/Scott Payne;Lab Managers;1307 N 18th Street, Fargo, ND 58102;;;701-231-8435
-Agribusiness and Applied Economics;2210;agecon;;http://www.ag.ndsu.edu/agecon/;;;;;;;;;;;;
-Agricultural and Biosystems Engineering;2220;aben;;http://www.ndsu.edu/aben/;;;;;;;;;;;;
-Animal Sciences;2230;ansc;;http://www.ag.ndsu.edu/ansc;;;;;;;;;;;;
-School of Food Systems;2240;foodsystems;;http://www.ag.ndsu.edu/foodsystems/;;;;;;;;;;;;
-Entomology;2250;;;http://www.ndsu.edu/entomology/;;;;;;;;;;;;
-Plant Pathology;2260;plantpath;;http://www.ag.ndsu.edu/plantpath/;;;;;;;;;;;;
-Plant Sciences;2270;;;http://www.ag.ndsu.edu/plantsciences/;;;;;;;;;;;;
-School of Natural Resource Sciences;2280;snrs;;http://www.ndsu.edu/snrs/;;;;;;;;;;;;
-Veterinary and Microbiological Sciences;2290;vetandmicro;;http://www.ndsu.edu/vetandmicro;;;;;;;;;;;;
-College of Arts, Humanities and Social Sciences;2300;ahss;;http://www.ndsu.edu/ahss/;Kent Sandstrom;Dean;Minard Hall;example@example.com;701-231-8338;;Kent Sandstrom;Dean;Minard Hall;example@example.com;701-231-8338;
-Communication;2310;comm;;http://www.ndsu.edu/communication/;;;;;;;;;;;;
-Criminal Justice and Political Science;2315;cjps;;http://www.ndsu.nodak.edu/ndsu/cjps/;;;;;;;;;;;;
-English;2320;;;http://www.ndsu.edu/english/;;;;;;;;;;;;
-Division of Performing Arts;2330;;;http://www.ndsu.edu/finearts;;;;;;;;;;;;
-Visual Arts;2332;;;http://www.ndsu.edu/finearts/visual_arts/index.html;;;;;;;;;;;;
-History, Philosophy, and Religious Studies;2340;;;http://www.ndsu.edu/history/;;;;;;;;;;;;
-Modern Languages;2345;;;http://www.ndsu.edu/modernlanguages/;;;;;;;;;;;;
-Sociology and Anthropology;2350;socanth;;http://www.ndsu.edu/socanth/;;;;;;;;;;;;
-Emergency Management;2351;emgt;;http://www.ndsu.edu/emgt/;;;;;;;;;;;;
-College of Business;2400;business;;http://www.ndsu.edu/business/;Jane Schuh;Interim Dean; Barry Hall;;;701-231-8651;Jane Schuh;Interim Dean; Barry Hall;;;701-231-8651
-Accounting, Finance, and Information Systems;2410;;;http://www.ndsu.edu/business/accounting_finance_info_systems/;;;;;;;;;;;;
-Management and Marketing;2420;mgmt-mrkt;;http://www.ndsu.edu/mgmt_mrkt/;;;;;;;;;;;;
-College of Engineering;2450;coe;;http://www.ndsu.edu/coe/;Gary Smith;Dean;Engineering Administration;example@example.com;701-231-7494;;Gary Smith;Dean;Engineering Administration;example@example.com;701-231-7494;
-Aerospace Studies;2460;afrotc;;http://www.ndsu.edu/ndsu/afrotc/;;;;;;;;;;;;
-Architecture and Landscape Architecture;2465;ala;;http://ala.ndsu.edu/;;;;;;;;;;;;
-Civil and Environmental Engineering;2470;ce;;http://www.ce.ndsu.nodak.edu/;;;;;;;;;;;;
-Construction Management and Engineering;2475;cme;;http://www.ndsu.edu/cme;;;;;;;;;;;;
-Electrical and Computer Engineering;2480;ece;;http://www.ece.ndsu.nodak.edu/;;;;;;;;;;;;
-Industrial and Manufacturing Engineering;2485;ime;;http://www.ndsu.nodak.edu/ndsu/ime;;;;;;;;;;;;
-Mechanical Engineering;2490;me;;http://www.ndsu.nodak.edu/me;;;;;;;;;;;;
-Military Science;2495;rotc;;http://www.ndsuarmyrotc.com/;;;;;;;;;;;;
-College of Human Development and Education;2600;hde;;http://www.ndsu.edu/hde/;Virginia Clark Johnson;Dean; E. Morrow Lebedeff Hall;example@example.com;701-231-8211;;Virginia Clark Johnson;Dean; E. Morrow Lebedeff Hall;example@example.com;701-231-8211;
-Apparel, Design, and Hospitality Management;2610;adfhm;;http://www.ndsu.nodak.edu/adfhm/;;;;;;;;;;;;
-Human Development and Family Science;2615;cdfs;;http://www.ndsu.edu/cdfs/;;;;;;;;;;;;
-Health, Nutrition, and Exercise Sciences;2620;hnes;;http://www.ndsu.edu/hnes/;;;;;;;;;;;;
-School of Education;2625;ed;;http://www.ndsu.nodak.edu/ndsu/education/;;;;;;;;;;;;
-College of Pharmacy, Nursing, and Allied Sciences;2650;;;http://www.ndsu.edu/pharmacy/;Charles D. Peterson;Dean; Sudro Hall;;701-231-7609;;Charles D. Peterson;Dean; Sudro Hall;;701-231-7609;
-Pharmacy Practice;2660;pharmpr;;http://pharmpr.ndsu.nodak.edu/;;;;;;;;;;;;
-Pharmaceutical Sciences;2665;pharmsci;;http://pharmsci.ndsu.nodak.edu/;;;;;;;;;;;;
-Nursing;2670;;;http://nursing.ndsu.nodak.edu/;;;;;;;;;;;;
-Allied Sciences;2680;;;http://www.ndsu.edu/alliedsciences;;;;;;;;;;;;
-College of Science and Mathematics;2700;scimath;;http://www.ndsu.edu/scimath/;Scott Wood;Dean; Stevens Hall;;701-231-7411;;Scott Wood;Dean; Stevens Hall;;701-231-7411;
-Biochemistry and Molecular Biology;2710;;;;;;;;;;;;;;;
-Biological Sciences;2715;;;http://biology.ndsu.nodak.edu/;;;;;;;;;;;;
-Chemistry and Biochemistry;2735;chem;TRUE;http://www.chem.ndsu.nodak.edu/;;;;;;;;;;;;
-Computer Science;2740;cs;;http://www.cs.ndsu.nodak.edu/;;;;;;;;;;;;
-Geosciences;2745;geosci;;http://www.ndsu.edu/geosci/;;;;;;;;;;;;
-Mathematics;2750;math;;http://www.math.ndsu.nodak.edu/;;;;;;;;;;;;
-Physics;2755;;;http://www.physics.ndsu.nodak.edu/;;;;;;;;;;;;
-Coatings and Polymeric Materials;2760;cpm;;http://cpm.ndsu.nodak.edu/;;;;;;;;;;;;
-Psychology;2765;;;http://www.ndsu.edu/psychology/;;;;;;;;;;;;
-Statistics;2770;;;http://www.ndsu.edu/statistics/;;;;;;;;;;;;
-College of University Studies;2800;;;http://www.ndsu.edu/univ_studies/;Carolyn Schnell;Associate Dean; Morrill Hall 112;;701-231-7014;;Carolyn Schnell;Associate Dean; Morrill Hall 112;;701-231-7014;
-Graduate School and Interdisciplinary Studies;2820;;;http://www.ndsu.edu/gradschool/;David Wittrock;Dean; Putnam Hall;;701-231-7033;;David Wittrock;Dean; Putnam Hall;;701-231-7033;
-Vice President for Research and Creativity;4000;;;http://www.ndsu.edu/research/;Kelly Rusch;Vice President;;;;;Kelly Rusch;Vice President;;;;
-Center for Computer Assistance Science & Technology;4100;ccat;TRUE;;;;;;;;;;;;;
-Center for Advanced Tech Transfer;4300;catt;;;;;;;;;;;;;;
-Center for Nanoscale Science & Engineering;4310;cnse;;;;;;;;;;;;;;
-Vice President for Information Technology;4500;vpit;;http://www.ndsu.edu/vpit/;Marc Wallman;Vice President;Quentin Burdick Building 206;;701-231-8640;;Marc Wallman;Vice President;Quentin Burdick Building 206;;701-231-8640;
-Enterprise Computing & Infrastructure;4530;eci;;;;;;;;;;;;;;
-Student Wellness;5100;;;http://www.ndsu.edu/studentwellness/;;;;;;;;;;;;
-Student Health Services;5150;shs;;;;;;;;;;;;;;
-Northern Crops Institute;7400;nci;;;;;;;;;;;;;;
-Agricultural Extension Services (AES) Director’s Office;7500;aes;;;;;;;;;;;;;;
-Agricultural Extension Services (AES) Administrative Facilities;7530;;;http://www.ag.ndsu.edu/extension/directory/administration/assistant-directors-offices;Stoltenow, Charlie;Assistant Director;Morrill Hall 309, NDSU;;701-231-7171;;Stoltenow, Charlie;Assistant Director;Morrill Hall 309, NDSU;;701-231-7171;
-Agricultural Extension Services (AES) Biochemistry;7600;;;;;;;;;;;;;;;
-Agricultural Extension Services (AES) Agriculture and Biosystems Engineering;7620;;;http://www.ag.ndsu.edu/extension/directory/agnr/ageng;Bajwa, Sreekala;Department Chair;Ag Engineering 100, NDSU;;701-231-7265;;Bajwa, Sreekala;Department Chair;Ag Engineering 100, NDSU;;701-231-7265;
-Agricultural Extension Services (AES) Animal Science;7630;;;http://www.ag.ndsu.edu/ansc/;Lardy, Greg;Department Chair;Hultz Hall 100, NDSU;;701-231-7660;;Lardy, Greg;Department Chair;Hultz Hall 100, NDSU;;701-231-7660;
-Agricultural Extension Services (AES) Main Station Farm;7631;;;http://www.ag.ndsu.edu/mainstation/;;;Morrill Hall on the Fargo campus;;701 231-7655;;;;Morrill Hall on the Fargo campus;;701 231-7655;
-Agricultural Extension Services (AES) School of Food Systems;7640;;;http://www.ag.ndsu.edu/food;Hall, Clifford;Assistant Professor;Harris Hall 210;;701 231-6359;;Hall, Clifford;Assistant Professor;Harris Hall 210;;701 231-6359;
-Agricultural Extension Services (AES) Entomology;7650;;;http://www.ndsu.edu/entomology/;Mark Boetel;Professor;202 Hultz Hall;;701-231-7901;;Mark Boetel;Professor;202 Hultz Hall;;701-231-7901;
-Agricultural Extension Services (AES) Plant Pathology;7660;;;http://www.ag.ndsu.edu/cpr/plant-pathology;Rasmussen, Jack;Department Chair;Walster Hall 306, NDSU;;701-231-7058;;Rasmussen, Jack;Department Chair;Walster Hall 306, NDSU;;701-231-7058;
-Agricultural Extension Services (AES) Plant Science;7670;;;http://www.ag.ndsu.edu/plantsciences;Horsley, Richard;Department Chair;Loftsgard Hall 166, NDSU;;701-231-8142;;Horsley, Richard;Department Chair;Loftsgard Hall 166, NDSU;;701-231-8142;
-Agricultural Extension Services (AES) School of Natural Resources Sciences;7680;;;http://www.ag.ndsu.edu/extension/directory/agnr/nrs;Casey, Frank;Director;Walster Hall 218A, NDSU;;701-231-8577;;Casey, Frank;Director;Walster Hall 218A, NDSU;;701-231-8577;
-Agricultural Extension Services (AES) Veterinary & Microbiology Sciences;7690;;;http://www.ndsu.edu/vetandmicro/;Dyer, Neil;Interim Chair;Van Es 150, NDSU;;701-231-7521;;Dyer, Neil;Interim Chair;Van Es 150, NDSU;;701-231-7521;
-Agricultural Extension Services (AES) Veterinary Diagnosis Services Department;7691;;;http://www.ndsu.edu/vetandmicro/;Dyer, Neil;Interim Chair;Van Es 150, NDSU;;701-231-7521;;Dyer, Neil;Interim Chair;Van Es 150, NDSU;;701-231-7521;
+"name","dept","abbr","display_abbr","url","ct_name","ct_title","ct_add","ct_email","ct_phone","ct_cell","tech_name","tech_title","tech_add","tech_email","tech_phone","tech_cell"
+"College of Agriculture, Food Systems and Natural Resources",2200,"ag","TRUE","http://www.ag.ndsu.edu/academics/","Jayma Moore/Scott Payne","Lab Managers","1307 N 18th Street, Fargo, ND 58102",,,"701-231-8435","Jayma Moore/Scott Payne","Lab Managers","1307 N 18th Street, Fargo, ND 58102",,,"701-231-8435"
+"Agribusiness and Applied Economics",2210,"agecon",,"http://www.ag.ndsu.edu/agecon/",,,,,,,,,,,,
+"Agricultural and Biosystems Engineering",2220,"aben",,"http://www.ndsu.edu/aben/",,,,,,,,,,,,
+"Animal Sciences",2230,"ansc",,"http://www.ag.ndsu.edu/ansc",,,,,,,,,,,,
+"School of Food Systems",2240,"foodsystems",,"http://www.ag.ndsu.edu/foodsystems/",,,,,,,,,,,,
+"Entomology",2250,,,"http://www.ndsu.edu/entomology/",,,,,,,,,,,,
+"Plant Pathology",2260,"plantpath",,"http://www.ag.ndsu.edu/plantpath/",,,,,,,,,,,,
+"Plant Sciences",2270,,,"http://www.ag.ndsu.edu/plantsciences/",,,,,,,,,,,,
+"School of Natural Resource Sciences",2280,"snrs",,"http://www.ndsu.edu/snrs/",,,,,,,,,,,,
+"Veterinary and Microbiological Sciences",2290,"vetandmicro",,"http://www.ndsu.edu/vetandmicro",,,,,,,,,,,,
+"College of Arts, Humanities and Social Sciences",2300,"ahss",,"http://www.ndsu.edu/ahss/","Kent Sandstrom","Dean","Minard Hall","example@example.com","701-231-8338",,"Kent Sandstrom","Dean","Minard Hall","example@example.com","701-231-8338",
+"Communication",2310,"comm",,"http://www.ndsu.edu/communication/",,,,,,,,,,,,
+"Criminal Justice and Political Science",2315,"cjps",,"http://www.ndsu.nodak.edu/ndsu/cjps/",,,,,,,,,,,,
+"English",2320,,,"http://www.ndsu.edu/english/",,,,,,,,,,,,
+"Division of Performing Arts",2330,,,"http://www.ndsu.edu/finearts",,,,,,,,,,,,
+"Visual Arts",2332,,,"http://www.ndsu.edu/finearts/visual_arts/index.html",,,,,,,,,,,,
+"History, Philosophy, and Religious Studies",2340,,,"http://www.ndsu.edu/history/",,,,,,,,,,,,
+"Modern Languages",2345,,,"http://www.ndsu.edu/modernlanguages/",,,,,,,,,,,,
+"Sociology and Anthropology",2350,"socanth",,"http://www.ndsu.edu/socanth/",,,,,,,,,,,,
+"Emergency Management",2351,"emgt",,"http://www.ndsu.edu/emgt/",,,,,,,,,,,,
+"College of Business",2400,"business",,"http://www.ndsu.edu/business/","Jane Schuh","Interim Dean"," Barry Hall",,,"701-231-8651","Jane Schuh","Interim Dean"," Barry Hall",,,"701-231-8651"
+"Accounting, Finance, and Information Systems",2410,,,"http://www.ndsu.edu/business/accounting_finance_info_systems/",,,,,,,,,,,,
+"Management and Marketing",2420,"mgmt-mrkt",,"http://www.ndsu.edu/mgmt_mrkt/",,,,,,,,,,,,
+"College of Engineering",2450,"coe",,"http://www.ndsu.edu/coe/","Gary Smith","Dean","Engineering Administration","example@example.com","701-231-7494",,"Gary Smith","Dean","Engineering Administration","example@example.com","701-231-7494",
+"Aerospace Studies",2460,"afrotc",,"http://www.ndsu.edu/ndsu/afrotc/",,,,,,,,,,,,
+"Architecture and Landscape Architecture",2465,"ala",,"http://ala.ndsu.edu/",,,,,,,,,,,,
+"Civil and Environmental Engineering",2470,"ce",,"http://www.ce.ndsu.nodak.edu/",,,,,,,,,,,,
+"Construction Management and Engineering",2475,"cme",,"http://www.ndsu.edu/cme",,,,,,,,,,,,
+"Electrical and Computer Engineering",2480,"ece",,"http://www.ece.ndsu.nodak.edu/",,,,,,,,,,,,
+"Industrial and Manufacturing Engineering",2485,"ime",,"http://www.ndsu.nodak.edu/ndsu/ime",,,,,,,,,,,,
+"Mechanical Engineering",2490,"me",,"http://www.ndsu.nodak.edu/me",,,,,,,,,,,,
+"Military Science",2495,"rotc",,"http://www.ndsuarmyrotc.com/",,,,,,,,,,,,
+"College of Human Development and Education",2600,"hde",,"http://www.ndsu.edu/hde/","Virginia Clark Johnson","Dean"," E. Morrow Lebedeff Hall","example@example.com","701-231-8211",,"Virginia Clark Johnson","Dean"," E. Morrow Lebedeff Hall","example@example.com","701-231-8211",
+"Apparel, Design, and Hospitality Management",2610,"adfhm",,"http://www.ndsu.nodak.edu/adfhm/",,,,,,,,,,,,
+"Human Development and Family Science",2615,"cdfs",,"http://www.ndsu.edu/cdfs/",,,,,,,,,,,,
+"Health, Nutrition, and Exercise Sciences",2620,"hnes",,"http://www.ndsu.edu/hnes/",,,,,,,,,,,,
+"School of Education",2625,"ed",,"http://www.ndsu.nodak.edu/ndsu/education/",,,,,,,,,,,,
+"College of Pharmacy, Nursing, and Allied Sciences",2650,,,"http://www.ndsu.edu/pharmacy/","Charles D. Peterson","Dean"," Sudro Hall",,"701-231-7609",,"Charles D. Peterson","Dean"," Sudro Hall",,"701-231-7609",
+"Pharmacy Practice",2660,"pharmpr",,"http://pharmpr.ndsu.nodak.edu/",,,,,,,,,,,,
+"Pharmaceutical Sciences",2665,"pharmsci",,"http://pharmsci.ndsu.nodak.edu/",,,,,,,,,,,,
+"Nursing",2670,,,"http://nursing.ndsu.nodak.edu/",,,,,,,,,,,,
+"Allied Sciences",2680,,,"http://www.ndsu.edu/alliedsciences",,,,,,,,,,,,
+"College of Science and Mathematics",2700,"scimath",,"http://www.ndsu.edu/scimath/","Scott Wood","Dean"," Stevens Hall",,"701-231-7411",,"Scott Wood","Dean"," Stevens Hall",,"701-231-7411",
+"Biochemistry and Molecular Biology",2710,,,,,,,,,,,,,,,
+"Biological Sciences",2715,,,"http://biology.ndsu.nodak.edu/",,,,,,,,,,,,
+"Chemistry and Biochemistry",2735,"chem","TRUE","http://www.chem.ndsu.nodak.edu/",,,,,,,,,,,,
+"Computer Science",2740,"cs",,"http://www.cs.ndsu.nodak.edu/",,,,,,,,,,,,
+"Geosciences",2745,"geosci",,"http://www.ndsu.edu/geosci/",,,,,,,,,,,,
+"Mathematics",2750,"math",,"http://www.math.ndsu.nodak.edu/",,,,,,,,,,,,
+"Physics",2755,,,"http://www.physics.ndsu.nodak.edu/",,,,,,,,,,,,
+"Coatings and Polymeric Materials",2760,"cpm",,"http://cpm.ndsu.nodak.edu/",,,,,,,,,,,,
+"Psychology",2765,,,"http://www.ndsu.edu/psychology/",,,,,,,,,,,,
+"Statistics",2770,,,"http://www.ndsu.edu/statistics/",,,,,,,,,,,,
+"College of University Studies",2800,,,"http://www.ndsu.edu/univ_studies/","Carolyn Schnell","Associate Dean"," Morrill Hall 112",,"701-231-7014",,"Carolyn Schnell","Associate Dean"," Morrill Hall 112",,"701-231-7014",
+"Graduate School and Interdisciplinary Studies",2820,,,"http://www.ndsu.edu/gradschool/","David Wittrock","Dean"," Putnam Hall",,"701-231-7033",,"David Wittrock","Dean"," Putnam Hall",,"701-231-7033",
+"Vice President for Research and Creativity",4000,,,"http://www.ndsu.edu/research/","Kelly Rusch","Vice President",,,,,"Kelly Rusch","Vice President",,,,
+"Center for Computer Assistance Science & Technology",4100,"ccat","TRUE",,,,,,,,,,,,,
+"Center for Advanced Tech Transfer",4300,"catt",,,,,,,,,,,,,,
+"Center for Nanoscale Science & Engineering",4310,"cnse",,,,,,,,,,,,,,
+"Vice President for Information Technology",4500,"vpit",,"http://www.ndsu.edu/vpit/","Marc Wallman","Vice President","Quentin Burdick Building 206",,"701-231-8640",,"Marc Wallman","Vice President","Quentin Burdick Building 206",,"701-231-8640",
+"Enterprise Computing & Infrastructure",4530,"eci",,,,,,,,,,,,,,
+"Student Wellness",5100,,,"http://www.ndsu.edu/studentwellness/",,,,,,,,,,,,
+"Student Health Services",5150,"shs",,,,,,,,,,,,,,
+"Northern Crops Institute",7400,"nci",,,,,,,,,,,,,,
+"Agricultural Extension Services (AES) Director’s Office",7500,"aes",,,,,,,,,,,,,,
+"Agricultural Extension Services (AES) Administrative Facilities",7530,,,"http://www.ag.ndsu.edu/extension/directory/administration/assistant-directors-offices","Stoltenow, Charlie","Assistant Director","Morrill Hall 309, NDSU",,"701-231-7171",,"Stoltenow, Charlie","Assistant Director","Morrill Hall 309, NDSU",,"701-231-7171",
+"Agricultural Extension Services (AES) Biochemistry",7600,,,,,,,,,,,,,,,
+"Agricultural Extension Services (AES) Agriculture and Biosystems Engineering",7620,,,"http://www.ag.ndsu.edu/extension/directory/agnr/ageng","Bajwa, Sreekala","Department Chair","Ag Engineering 100, NDSU",,"701-231-7265",,"Bajwa, Sreekala","Department Chair","Ag Engineering 100, NDSU",,"701-231-7265",
+"Agricultural Extension Services (AES) Animal Science",7630,,,"http://www.ag.ndsu.edu/ansc/","Lardy, Greg","Department Chair","Hultz Hall 100, NDSU",,"701-231-7660",,"Lardy, Greg","Department Chair","Hultz Hall 100, NDSU",,"701-231-7660",
+"Agricultural Extension Services (AES) Main Station Farm",7631,,,"http://www.ag.ndsu.edu/mainstation/",,,"Morrill Hall on the Fargo campus",,"701 231-7655",,,,"Morrill Hall on the Fargo campus",,"701 231-7655",
+"Agricultural Extension Services (AES) School of Food Systems",7640,,,"http://www.ag.ndsu.edu/food","Hall, Clifford","Assistant Professor","Harris Hall 210",,"701 231-6359",,"Hall, Clifford","Assistant Professor","Harris Hall 210",,"701 231-6359",
+"Agricultural Extension Services (AES) Entomology",7650,,,"http://www.ndsu.edu/entomology/","Mark Boetel","Professor","202 Hultz Hall",,"701-231-7901",,"Mark Boetel","Professor","202 Hultz Hall",,"701-231-7901",
+"Agricultural Extension Services (AES) Plant Pathology",7660,,,"http://www.ag.ndsu.edu/cpr/plant-pathology","Rasmussen, Jack","Department Chair","Walster Hall 306, NDSU",,"701-231-7058",,"Rasmussen, Jack","Department Chair","Walster Hall 306, NDSU",,"701-231-7058",
+"Agricultural Extension Services (AES) Plant Science",7670,,,"http://www.ag.ndsu.edu/plantsciences","Horsley, Richard","Department Chair","Loftsgard Hall 166, NDSU",,"701-231-8142",,"Horsley, Richard","Department Chair","Loftsgard Hall 166, NDSU",,"701-231-8142",
+"Agricultural Extension Services (AES) School of Natural Resources Sciences",7680,,,"http://www.ag.ndsu.edu/extension/directory/agnr/nrs","Casey, Frank","Director","Walster Hall 218A, NDSU",,"701-231-8577",,"Casey, Frank","Director","Walster Hall 218A, NDSU",,"701-231-8577",
+"Agricultural Extension Services (AES) Veterinary & Microbiology Sciences",7690,,,"http://www.ndsu.edu/vetandmicro/","Dyer, Neil","Interim Chair","Van Es 150, NDSU",,"701-231-7521",,"Dyer, Neil","Interim Chair","Van Es 150, NDSU",,"701-231-7521",
+"Agricultural Extension Services (AES) Veterinary Diagnosis Services Department",7691,,,"http://www.ndsu.edu/vetandmicro/","Dyer, Neil","Interim Chair","Van Es 150, NDSU",,"701-231-7521",,"Dyer, Neil","Interim Chair","Van Es 150, NDSU",,"701-231-7521",
