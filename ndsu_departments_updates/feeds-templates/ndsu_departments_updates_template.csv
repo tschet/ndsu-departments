@@ -1,1 +1,1 @@
-name;dept;abbr;display_abbr;url;ct_name;ct_title;ct_add;ct_email;ct_phone;ct_cell;tech_name;tech_title;tech_add;tech_email;tech_phone;tech_cell
+name,dept,abbr,display_abbr,url,ct_name,ct_title,ct_add,ct_email,ct_phone,ct_cell,tech_name,tech_title,tech_add,tech_email,tech_phone,tech_cell
